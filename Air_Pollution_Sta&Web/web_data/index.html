@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>北部空品區歷年趨勢</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+
+<div id="map"></div>
+
+<header>
+    <div class="header-title">北部空品區歷年趨勢</div>
+</header>
+
+<aside class="sidebar">
+    <h4 style="margin-top:0;">時間篩選</h4>
+    <div class="selector-group">
+        <select id="yearSelect"></select>
+        <select id="monthSelect"></select>
+        <select id="daySelect"></select>
+    </div>
+    
+    <div style="text-align:center; margin: 15px 0;">
+        <span id="currentTimeLabel" style="font-size: 1.2rem; font-weight: bold; color: var(--primary);">--:--</span>
+        <input type="range" id="timeSlider" min="0" max="23" value="0" style="width:100%; margin-top:10px;">
+    </div>
+
+    <h4 style="margin-top:25px;">觀測站篩選</h4>
+    <div style="display: flex; gap: 8px; margin-bottom: 15px;">
+        <button class="action-btn" style="flex:1" onclick="toggleAllTags(true)">全選站點</button>
+        <button class="action-btn" style="flex:1" onclick="toggleAllTags(false)">清除選取</button>
+    </div>
+    <div id="stationTags"></div>
+</aside>
+
+<section class="detail-panel" id="detailPanel" onclick="toggleDrawer()">
+    <div style="margin-top: 15px;">
+        <div id="analysisContent">
+            <div class="card" style="border-top: 5px solid var(--primary);">
+                <h2 id="viewName" style="margin:0;">--</h2>
+                <div id="viewAQI" class="stat-aqi-val">--</div>
+                <div id="viewDetail" style="font-size:0.9rem; color:#555; line-height:1.6;"></div>
+            </div>
+            <div class="card">
+                <h4 style="margin:0 0 12px 0; color: #666;">24H 溫度＆雨量趨勢 </h4>
+                <!-- 新增這個 wrapper -->
+                <div class="chart-wrapper">
+                    <canvas id="weatherChart"></canvas>
+                </div>
+            </div>
+            <div class="card">
+                <h4 style="margin:0 0 12px 0; color: #666;">24H AQI 變化</h4>
+                <div class="chart-wrapper">
+                    <canvas id="aqi24hChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
