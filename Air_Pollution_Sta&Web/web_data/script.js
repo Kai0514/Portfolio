@@ -60,7 +60,7 @@ async function updateMap() {
 
     try {
         if (!monthlyCache[monthKey]) {
-            const res = await fetch(`https://raw.githubusercontent.com/Kai0514/Repo_1/main/Air_Pollution_Data/web_data/data_json_monthly/${monthKey}.json`);
+            const res = await fetch(`https://raw.githubusercontent.com/Kai0514/Repo_1/main/Air_Pollution_Sta%26Web/web_data/data_json_monthly/${monthKey}.json`);
             if (!res.ok) throw new Error("File not found");
             const raw = await res.text();
             monthlyCache[monthKey] = JSON.parse(raw.replace(/:NaN/g, ":null"));
